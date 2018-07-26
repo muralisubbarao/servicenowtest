@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Query" max_length="40" name="x_cign3_queryandco_query" type="collection">
+        <element label="description" max_length="1000" name="description" type="string"/>
+        <element label="isdisplayforall" max_length="40" name="isdisplayforall" type="boolean"/>
+        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Query ID" max_length="40" name="number" type="string"/>
+        <element choice="3" default="Select" label="Querytype" max_length="32" name="querytype" reference="x_cign3_queryandco_querytype" type="reference">
+            <choice/>
+        </element>
+        <element label="status" max_length="40" name="status" type="boolean"/>
+        <element display="true" label="title" max_length="15" name="title" type="string"/>
+        <index name="index">
+            <element name="querytype"/>
+        </index>
+    </element>
+</database>

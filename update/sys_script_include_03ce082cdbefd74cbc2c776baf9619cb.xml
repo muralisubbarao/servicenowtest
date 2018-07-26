@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_cign3_queryandco.QueryQuestion</api_name>
+        <client_callable>true</client_callable>
+        <description/>
+        <name>QueryQuestion</name>
+        <script><![CDATA[var QueryQuestion = Class.create();
+QueryQuestion.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+SETQuestion:function(){
+var que = this.getParameter('sysparm_Tquestion');
+var question = que.split(",");
+gs.info("question is "+que,"10");
+var qu = new GlideRecord('x_cign3_queryandco_query');
+	qu.initialize();
+	qu.title=question[0];
+	qu.description = question[1];
+	qu.querytype = question[2];
+	var id = qu.insert();
+return id.toString();
+},
+getQueryType: function(){
+var qType = new GlideRecord('x_cign3_queryandco_querytype');
+	qType.query();
+	var favs ;
+
+	while(qType.next()){
+		favs = this.newItem("favorite");
+		var name = qType.name;
+		var id = qType.sys_id;
+	   favs.setAttribute("name",name);
+	   favs.setAttribute("id",id); 
+	}
+},
+getQueryList:function(){
+	
+	//pageSize+","+CurrentPage+","+pageNum+","+filter+","+whereQUery;
+	
+	var que = this.getParameter('sysparm_searchQuery');
+	var params = que.split(",");
+	var pageSize=params[0];
+	var CurrentPage=params[1];
+	var pageNum=params[2];
+	var filter=params[3];
+	var whereQUery=params[4];
+	var isfrom=params[5];
+		if(isfrom=='next')
+		{
+			CurrentPage =CurrentPage +1;
+		}
+	else if(isfrom=='prev')
+		{
+			CurrentPage =CurrentPage -1;
+		}
+
+	var qlist = new GlideRecord('x_cign3_queryandco_query');
+	if(CurrentPage>0)
+		CurrentPage= CurrentPage-1;
+	var startPage = CurrentPage * pageSize;
+	var endPage = (CurrentPage * pageSize) ;
+	qlist.chooseWindow(startPage,endPage);
+	qlist.query();
+	var quryList ;
+
+	while(qlist.next()){
+	   quryList = this.newItem("queryList");
+	   quryList.setAttribute("title",qlist.title);
+	   quryList.setAttribute("id",qlist.sys_id); 
+	   quryList.setAttribute("desc", qlist.description);
+	   quryList.setAttribute("querytype", qlist.querytype.getDisplayValue()); 
+	}
+},
+    type: 'QueryQuestion'
+});]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>M15667</sys_created_by>
+        <sys_created_on>2018-07-23 12:28:42</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>03ce082cdbefd74cbc2c776baf9619cb</sys_id>
+        <sys_mod_count>16</sys_mod_count>
+        <sys_name>QueryQuestion</sys_name>
+        <sys_package display_value="QueryandCommentSystem" source="x_cign3_queryandco">2e33f68bdb971f046039fbf9af961947</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="QueryandCommentSystem">2e33f68bdb971f046039fbf9af961947</sys_scope>
+        <sys_update_name>sys_script_include_03ce082cdbefd74cbc2c776baf9619cb</sys_update_name>
+        <sys_updated_by>M15667</sys_updated_by>
+        <sys_updated_on>2018-07-25 14:40:28</sys_updated_on>
+    </sys_script_include>
+</record_update>

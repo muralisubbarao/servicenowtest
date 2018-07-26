@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="QueryAnswer" max_length="40" name="x_cign3_queryandco_queryanswer" type="collection">
+        <element label="description" max_length="500" name="description" type="string"/>
+        <element label="isapproved" max_length="40" name="isapproved" type="boolean"/>
+        <element label="isliked" max_length="40" name="isliked" type="boolean"/>
+        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Query Answer ID" max_length="40" name="number" type="string"/>
+        <element label="status" max_length="40" name="status" type="boolean"/>
+        <element label="title" max_length="15" name="title" type="string"/>
+    </element>
+</database>

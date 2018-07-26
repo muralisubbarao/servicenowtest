@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ui_page">
+    <sys_ui_page action="INSERT_OR_UPDATE">
+        <category>general</category>
+        <client_script><![CDATA[function AddScreen()
+{
+	//document.getElementById("divAddContainer").classList.add('MyClass');
+	//document.getElementById("MyElement").classList.remove('MyClass');
+	//if ( document.getElementById("divAddContainer").classList.contains('hide') )
+	document.getElementById("divAddContainer").classList.toggle('hide');
+	if (!document.getElementById("divAddContainer").classList.contains('hide') )
+		{
+	var ga = new GlideAjax('QueryQuestion');
+	ga.addParam('sysparm_name', 'getQueryType');
+	//.addParam('sysparm_Tquestion', title+","+description);
+	ga.getXML(queryget);
+		}
+function queryget(serverResponse){
+	var favorites = serverResponse.responseXML.getElementsByTagName("favorite");
+    var output="";
+	var myDiv = document.getElementById("divQueryType");
+    var selectList = document.createElement("select");
+    selectList.id = "queryType";
+	selectList.name = "queryType";
+	myDiv.innerHTML = "";
+    myDiv.appendChild(selectList);
+	addClass(selectList,'form-control');
+   for(var i = 0; i < favorites.length; i ++) {
+    var option = document.createElement("option");
+    option.value = favorites[i].getAttribute("id");
+    option.text = favorites[i].getAttribute("name");
+    selectList.appendChild(option);
+  }
+	
+}
+}
+function SaveRecords(){
+var title = document.getElementById("title").value;
+var description = document.getElementById("description").value;	
+var querytype=document.getElementById("queryType").value;
+ var ga = new GlideAjax('QueryQuestion');
+ga.addParam('sysparm_name', 'SETQuestion');
+ga.addParam('sysparm_Tquestion', title+","+description+","+querytype);
+ga.getXML(QuestionSave);
+ 
+function QuestionSave(response) {
+  var answer = response.responseXML.documentElement.getAttribute("answer");
+	if(answer!='')
+	  getQueryList('');
+
+}
+	
+}
+function getQueryList(isfrom)
+{
+	var pageSize=document.getElementById("hdnpageSize").value ;
+	var CurrentPage=document.getElementById("hdncurrentPage").value;
+	var pageNum=0;
+	var filter='0';
+	var whereQUery='0';
+	
+if(isfrom=='next')
+	document.getElementById("hdncurrentPage").value= CurrentPage+1;
+	else if(isfrom=='prev')
+	{
+		if(CurrentPage>0)
+			document.getElementById("hdncurrentPage").value= CurrentPage-1;
+	}
+	var params=pageSize+","+CurrentPage+","+pageNum+","+filter+","+whereQUery+","+isfrom;
+	var ga = new GlideAjax('QueryQuestion');
+	ga.addParam('sysparm_name', 'getQueryList');
+	ga.addParam('sysparm_searchQuery',params);
+	ga.getXML(bindQueryList);
+	function bindQueryList(serverResponse){
+	var queryList = serverResponse.responseXML.getElementsByTagName("queryList");
+    var output="";
+	var dvQueryListView = document.getElementById("dvQueryListView");
+		dvQueryListView.innerHTML = "";
+		for(var i = 0; i < queryList.length; i ++) {
+				dvQueryListView.appendChild(buildListView(queryList[i],dvQueryListView));
+		  }
+	}
+}
+
+function buildListView(queryList,dvQueryListView)
+{
+	 var div = document.createElement('div');
+    div.className = 'row';
+    div.innerHTML ='<div class="brdr bgc-fff pad-5 box-shad btm-mrg-10 property-listing">'+
+                        '<div class="media">'+
+                            '<div class="clearfix visible-sm"></div>'+
+                            '<div class="media-body fnt-smaller">'+
+                                '<a href="#" target="_parent"></a>'+
+                                '<h4 class="media-heading">'+
+                                  '<a href="#" target="_parent">'+queryList.getAttribute("title")+'('+queryList.getAttribute("querytype")+') </a>'+
+								'</h4>'+
+                                '<p class="hidden-xs ">'+queryList.getAttribute("desc")+'</p>'+
+								'<ul class="list-inline mrg-5 btm-mrg- clr-535353">'+
+									'<li><a href="#">View</a></li>'+
+                                    '<li style="list-style: none" >|</li>'+
+                                    '<li><a href="#">Like</a></li>'+
+                                    '<li style="list-style: none">|</li>'+
+									'<li><a href="#">Share</a></li>'+
+                                '</ul>'+
+                            '</div>'+
+                        '</div>'+
+                    '</div>';
+    return div;
+}
+
+function onNext(isfrom)
+{
+	getQueryList(isfrom);
+}
+
+function onPrevious(isfrom)
+{
+	getQueryList(isfrom);
+}
+function hasClass(ele, cls) {
+    return ele.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
+}
+function addClass(ele, cls) {
+    if (!hasClass(ele, cls)) ele.className += " " + cls;
+}
+function removeClass(ele, cls) {
+    if (hasClass(ele, cls)) {
+        var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');
+        ele.className = ele.className.replace(reg, ' ');
+    }
+}
+addLoadEvent(getQueryList);]]></client_script>
+        <description/>
+        <direct>false</direct>
+        <endpoint>x_cign3_queryandco_QuerySystem.do</endpoint>
+        <html><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
+<j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
+
+	<style>
+		/**** BASE ****/
+body {
+    color: #888;   
+}
+a {
+    color: #03a1d1;
+    text-decoration: none!important;
+}
+
+/**** LAYOUT ****/
+.list-inline>li {
+    padding: 0 10px 0 0;
+}
+.container-pad {
+    padding: 30px 15px;
+}
+
+
+/**** MODULE ****/
+.bgc-fff {
+    background-color: #fff!important;
+}
+.box-shad {
+    -webkit-box-shadow: 1px 1px 0 rgba(0,0,0,.2);
+    box-shadow: 1px 1px 0 rgba(0,0,0,.2);
+}
+.brdr {
+    border: 1px solid #ededed;
+}
+
+/* Font changes */
+.fnt-smaller {
+    font-size: .9em;
+}
+.fnt-lighter {
+    color: #bbb;
+}
+
+/* Padding - Margins */
+.pad-10 {
+    padding: 10px!important;
+}
+		.pad-5 {
+    padding: 5px!important;
+}
+.mrg-0 {
+    margin: 0!important;
+}
+.btm-mrg-5{
+    margin-bottom: 5px!important;		
+}
+.btm-mrg-10 {
+    margin-bottom: 10px!important;
+}
+.btm-mrg-20 {
+    margin-bottom: 20px!important;
+}
+
+/* Color  */
+.clr-535353 {
+    color: #535353;
+}
+
+
+
+
+/**** MEDIA QUERIES ****/
+@media only screen and (max-width: 991px) {
+    #property-listings .property-listing {
+        padding: 5px!important;
+    }
+    #property-listings .property-listing a {
+        margin: 0;
+    }
+    #property-listings .property-listing .media-body {
+        padding: 10px;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    #property-listings .property-listing img {
+        max-width: 180px;
+    }
+}
+
+	</style>
+<div class="container-fluid" style="background-color:#e8e8e8">
+        <div class="container container-pad" id="property-listings">
+            
+            <div class="row">
+              <div class="col-md-12">
+                <h1>Query System</h1>
+                <p>can post a query and get the appropriate responce.</p>
+              </div>
+            </div>
+			<div class="row">
+				<div class="col-md-12">
+				<a href="#" target="_parent"><small class="pull-right" onclick="AddScreen()">Add Query</small></a>
+				</div>
+			</div>
+			<div class="hide" id="divAddContainer" > 
+			<div class="row pad-5">
+				<div class="col-md-8">
+					<input type="text" name="title" id="title" class="form-control" placeholder="Title" />
+				</div>
+			<div class="col-md-4">
+					</div>
+			</div>
+				<div class="row pad-5">
+				<div class="col-md-8" id="divQueryType">
+					
+				</div>
+			<div class="col-md-4">
+					</div>
+			</div>
+				
+				<div class="row pad-5">
+				<div class="col-md-8">
+								<textarea rows="4" cols="50" name="description" id="description" placeholder="Description"  class="form-control">
+					</textarea>
+				</div>
+					<div class="col-md-4">
+					</div>
+				
+			</div>
+				<div class="row pad-5">
+					<div class="col-md-8">
+						<input type="button" onclick="SaveRecords()" name="btnsave" id="btnsave" value="Save" class="btn btn-primary pull-right" />
+					</div>
+					<div class="col-md-4">
+					</div>
+				</div>
+			</div>
+            <div class="row">
+                <div class="col-sm-12"> 
+					
+					<div id="dvQueryListView"> </div>
+                   <ul class="pagination">
+					  <li class="page-item">
+						  <input type="hidden" name="hdnpageSize" value="2" id="hdnpageSize" />
+						  <input type="hidden" name="hdncurrentPage"  value="0" id="hdncurrentPage" />
+						  <!-- <input type="hidden" name="hdnpageSize" id="hdnpagenum"  /> -->
+						  <a class="page-link" href="#" onclick="onPrevious('prev')">Previous</a></li>
+					  <li class="page-item"><a class="page-link" href="#"  onclick="onNext('next')">Next</a></li>
+					</ul>
+                    
+				</div>
+            </div><!-- End row -->
+        </div><!-- End container -->
+    </div>
+</j:jelly>]]></html>
+        <name>QuerySystem</name>
+        <processing_script><![CDATA[  ]]></processing_script>
+        <sys_class_name>sys_ui_page</sys_class_name>
+        <sys_created_by>M15667</sys_created_by>
+        <sys_created_on>2018-07-20 05:21:01</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>767053d3db979f046039fbf9af9619a9</sys_id>
+        <sys_mod_count>70</sys_mod_count>
+        <sys_name>QuerySystem</sys_name>
+        <sys_package display_value="QueryandCommentSystem" source="x_cign3_queryandco">2e33f68bdb971f046039fbf9af961947</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="QueryandCommentSystem">2e33f68bdb971f046039fbf9af961947</sys_scope>
+        <sys_update_name>sys_ui_page_767053d3db979f046039fbf9af9619a9</sys_update_name>
+        <sys_updated_by>M15667</sys_updated_by>
+        <sys_updated_on>2018-07-25 14:31:59</sys_updated_on>
+    </sys_ui_page>
+</record_update>

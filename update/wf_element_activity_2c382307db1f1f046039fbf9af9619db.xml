@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="wf_element_activity">
+    <wf_element_activity action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <attributes/>
+        <base_provider display_value="JDBC">1bce1222d7123100a70f42285e6103b1</base_provider>
+        <category/>
+        <checked_out_by display_value="Praveen Kumar Laveti">2cd369120ffe8788a0ef42bce1050e48</checked_out_by>
+        <default_height/>
+        <default_width/>
+        <description/>
+        <image>images/heisenberg_icons/workflow_ie8/provider_jdbc.png</image>
+        <input_meta/>
+        <input_process_script/>
+        <input_transform>{"jdbc_connection":"","fixed_credential_id":"","sql_statement":"","maximum_rows":"1,000","maximum_payload_size":"64","connection_timeout":"0","query_timeout":"0","midCapabilities":"1eaec4a0d7012200171f42285e610340","stored_procedure":"false","stored_procedure_name":"","stored_procedure_variables":"[]"}</input_transform>
+        <local_variables/>
+        <name>teraat</name>
+        <output_meta/>
+        <output_process_script/>
+        <output_transform/>
+        <processing_script/>
+        <sample_payloads>{}</sample_payloads>
+        <short_description/>
+        <style/>
+        <sys_class_name>wf_element_activity</sys_class_name>
+        <sys_created_by>M15667</sys_created_by>
+        <sys_created_on>2018-07-19 12:25:59</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>2c382307db1f1f046039fbf9af9619db</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>teraat</sys_name>
+        <sys_package display_value="QueryandCommentSystem" source="x_cign3_queryandco">2e33f68bdb971f046039fbf9af961947</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="QueryandCommentSystem">2e33f68bdb971f046039fbf9af961947</sys_scope>
+        <sys_update_name>wf_element_activity_2c382307db1f1f046039fbf9af9619db</sys_update_name>
+        <sys_updated_by>M15667</sys_updated_by>
+        <sys_updated_on>2018-07-19 12:25:59</sys_updated_on>
+        <version_container_id>56586f03db1f1f046039fbf9af961959</version_container_id>
+    </wf_element_activity>
+    <sys_translated_text action="delete_multiple" query="documentkey=2c382307db1f1f046039fbf9af9619db"/>
+    <wf_versionable action="INSERT_OR_UPDATE">
+        <checked_out>2018-07-19 12:25:59</checked_out>
+        <checked_out_by display_value="Praveen Kumar Laveti">2cd369120ffe8788a0ef42bce1050e48</checked_out_by>
+        <published>false</published>
+        <sys_created_by>M15667</sys_created_by>
+        <sys_created_on>2018-07-19 12:25:59</sys_created_on>
+        <sys_id>92586f03db1f1f046039fbf9af96195a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>M15667</sys_updated_by>
+        <sys_updated_on>2018-07-19 12:25:59</sys_updated_on>
+        <valid_from/>
+        <valid_to/>
+        <version>1</version>
+        <version_container_id>56586f03db1f1f046039fbf9af961959</version_container_id>
+        <wf_element_definition display_value="teraat">2c382307db1f1f046039fbf9af9619db</wf_element_definition>
+    </wf_versionable>
+</record_update>

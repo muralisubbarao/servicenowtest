@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_security_acl_role">
+    <sys_security_acl_role action="INSERT_OR_UPDATE">
+        <sys_class_name>sys_security_acl_role</sys_class_name>
+        <sys_created_by>M15667</sys_created_by>
+        <sys_created_on>2018-07-19 08:36:42</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>27d33a0fdbd71f046039fbf9af9619d6</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_cign3_queryandco_querytype.x_cign3_queryandco.querytype_user</sys_name>
+        <sys_package display_value="QueryandCommentSystem" source="x_cign3_queryandco">2e33f68bdb971f046039fbf9af961947</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="QueryandCommentSystem">2e33f68bdb971f046039fbf9af961947</sys_scope>
+        <sys_security_acl display_value="x_cign3_queryandco_querytype">efd33a0fdbd71f046039fbf9af9619d2</sys_security_acl>
+        <sys_update_name>sys_security_acl_role_27d33a0fdbd71f046039fbf9af9619d6</sys_update_name>
+        <sys_updated_by>M15667</sys_updated_by>
+        <sys_updated_on>2018-07-19 08:36:42</sys_updated_on>
+        <sys_user_role display_value="x_cign3_queryandco.querytype_user" name="x_cign3_queryandco.querytype_user">97d3fa43db571f046039fbf9af9619f5</sys_user_role>
+        <transaction_id/>
+    </sys_security_acl_role>
+</record_update>

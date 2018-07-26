@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="ua_table_licensing_config">
+    <ua_table_licensing_config action="INSERT_OR_UPDATE">
+        <is_fulfillment>false</is_fulfillment>
+        <license_condition/>
+        <license_model>none</license_model>
+        <license_roles/>
+        <name>x_cign3_queryandco_querytype</name>
+        <op_delete>true</op_delete>
+        <op_insert>true</op_insert>
+        <op_update>true</op_update>
+        <owner_condition/>
+        <sys_class_name>ua_table_licensing_config</sys_class_name>
+        <sys_created_by>M15667</sys_created_by>
+        <sys_created_on>2018-07-19 08:36:43</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>c4e37a0fdbd71f046039fbf9af96196c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_cign3_queryandco_querytype</sys_name>
+        <sys_package display_value="QueryandCommentSystem" source="x_cign3_queryandco">2e33f68bdb971f046039fbf9af961947</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="QueryandCommentSystem">2e33f68bdb971f046039fbf9af961947</sys_scope>
+        <sys_update_name>ua_table_licensing_config_c4e37a0fdbd71f046039fbf9af96196c</sys_update_name>
+        <sys_updated_by>M15667</sys_updated_by>
+        <sys_updated_on>2018-07-19 08:36:43</sys_updated_on>
+    </ua_table_licensing_config>
+</record_update>

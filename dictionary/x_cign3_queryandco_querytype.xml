@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="QueryType" max_length="40" name="x_cign3_queryandco_querytype" type="collection">
+        <element label="Description" max_length="500" name="description" type="string"/>
+        <element display="true" label="name" max_length="15" name="name" type="string"/>
+        <element label="status" max_length="40" name="status" type="boolean"/>
+    </element>
+</database>
