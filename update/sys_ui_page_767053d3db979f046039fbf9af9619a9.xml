@@ -53,6 +53,7 @@ function QuestionSave(response) {
 }
 function getQueryList(isfrom)
 {
+	
 	var pageSize=document.getElementById("hdnpageSize").value ;
 	var CurrentPage=document.getElementById("hdncurrentPage").value;
 	var pageNum=0;
@@ -76,6 +77,7 @@ if(isfrom=='next')
     var output="";
 	var dvQueryListView = document.getElementById("dvQueryListView");
 		dvQueryListView.innerHTML = "";
+		console.log(queryList);
 		for(var i = 0; i < queryList.length; i ++) {
 				dvQueryListView.appendChild(buildListView(queryList[i],dvQueryListView));
 		  }
@@ -295,7 +297,7 @@ a {
         <sys_created_on>2018-07-20 05:21:01</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>767053d3db979f046039fbf9af9619a9</sys_id>
-        <sys_mod_count>70</sys_mod_count>
+        <sys_mod_count>72</sys_mod_count>
         <sys_name>QuerySystem</sys_name>
         <sys_package display_value="QueryandCommentSystem" source="x_cign3_queryandco">2e33f68bdb971f046039fbf9af961947</sys_package>
         <sys_policy/>
@@ -303,6 +305,6 @@ a {
         <sys_scope display_value="QueryandCommentSystem">2e33f68bdb971f046039fbf9af961947</sys_scope>
         <sys_update_name>sys_ui_page_767053d3db979f046039fbf9af9619a9</sys_update_name>
         <sys_updated_by>M15667</sys_updated_by>
-        <sys_updated_on>2018-07-25 14:31:59</sys_updated_on>
+        <sys_updated_on>2018-07-26 12:06:38</sys_updated_on>
     </sys_ui_page>
 </record_update>
