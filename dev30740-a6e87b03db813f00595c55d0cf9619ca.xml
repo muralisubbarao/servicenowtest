@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><unload unload_date="2019-05-01 10:00:06"><sys_remote_update_set action="INSERT_OR_UPDATE"><application display_value="Global">global</application><application_name>Global</application_name><application_scope>global</application_scope><application_version/><collisions/><commit_date/><deleted/><description>ITIL User Activity Report is a great way to gain an on-demand view of who your itil-roled users are and how active they are in your ServiceNow instance:
+
+-Adds an 'ITIL User Activity' application in the left nav.
+-Choose the 'Run Report' option to generate a report showing the last login time and last task-based activity for each itil-roled user.
+-Use this information to assess user activity and find inactive users who may be unnecessarily consuming your ServiceNow licenses.
+
+Note:
+-The 'itil.user.activity.tables' system property contains the list of tables where inserts/updates denotes 'itil activity'. Add or remove tables to meet your needs.</description><inserted/><name>ITIL User Activity Report v1.0</name><origin_sys_id/><parent/><release_date/><remote_base_update_set/><remote_parent_id/><remote_sys_id>a6e87b03db813f00595c55d0cf9619ca</remote_sys_id><state>loaded</state><summary/><sys_class_name>sys_remote_update_set</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2019-05-01 10:00:06</sys_created_on><sys_id>39adbb07db813f00595c55d0cf9619ed</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2019-05-01 10:00:06</sys_updated_on><update_set/><update_source/><updated/></sys_remote_update_set></unload>
